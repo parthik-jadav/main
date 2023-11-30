@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+       const a = parseInt(prompt("enter a number :"));
+       const b = parseInt(prompt("enter a number :"));
+       const c = prompt("enter a symbol [+,-,%,*,/] :");
+
+       switch(c){
+        case "+":
+            document.write(a+b);
+            break;
+        case "-":
+            document.write(a-b);
+            break;
+        case "%":
+            document.write(a%b);
+            break;
+        case "*":
+            document.write(a*b);
+            break;
+        case "/":
+            document.write(a/b);
+            break;
+        default:
+            alert("this input is invalid enter correct input")
+
+       }
+
+    </script>
+</body>
+</html>

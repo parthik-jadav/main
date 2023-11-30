@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function check(a,b,c,d){
+
+        if(a > b && a > c && a > d){
+            document.write("a is the largest number");
+        }else if (b > a && b > c && b > d){
+            document.write("b is the largest number");
+        }else if (c > a && c > b && c > d){
+            document.write("c is the largest number");
+        }else if (d > a && d > b && d > c){
+            document.write("d is the largest number");
+        }else{
+            alert("this is invalid value pease enter valid value")  
+        }
+    }
+    check(1,2,3,4);
+    </script>
+</body>
+</html>

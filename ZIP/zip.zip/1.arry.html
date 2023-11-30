@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("enter a number"))
+        let filter = []
+        let arry = [10,20,30,40,50]
+
+        for(let i=0;i<arry.length;i++){
+            if(arry[i] === a){
+                filter.push(arry[i]);
+            }
+
+            }
+            if(filter.length === 0){
+                document.write("false");
+            }else if (filter.length === 1){
+                document.write("true");
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="calculator.css">
+    <title>KG Coding Calculator</title>
+</head>
+
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <div class="button-container">
+            <button class="button" onclick="
+      values = '';
+      document.querySelector('#display').value = values;
+      ">c</button>
+            <button class="button" onclick="
+      values = values + '1';
+      document.querySelector('#display').value = values;
+      ">1</button>
+            <button class="button" onclick="
+      values = values + '2';
+      document.querySelector('#display').value = values;
+      ">2</button>
+            <button class="button" onclick="
+      values = values + '+';
+      document.querySelector('#display').value = values;
+      ">+</button>
+            <button class="button" onclick="
+      values = values + '3';
+      document.querySelector('#display').value = values;
+      ">3</button>
+            <button class="button" onclick="
+      values = values + '4';
+      document.querySelector('#display').value = values;
+      ">4</button>
+            <button class="button" onclick="
+      values = values + '-';
+      document.querySelector('#display').value = values;
+      ">-</button>
+            <button class="button" onclick="
+      values = values + '5';
+      document.querySelector('#display').value = values;
+      ">5</button>
+            <button class="button" onclick="
+      values = values + '6';
+      document.querySelector('#display').value = values;
+      ">6</button>
+            <button class="button" onclick="
+      values = values + '*';
+      document.querySelector('#display').value = values;
+      ">*</button>
+            <button class="button" onclick="
+      values = values + '7';
+      document.querySelector('#display').value = values;
+      ">7</button>
+            <button class="button" onclick="
+      values = values + '8';
+      document.querySelector('#display').value = values;
+      ">8</button>
+            <button class="button" onclick="
+      values = values + '/';
+      document.querySelector('#display').value = values;
+      ">/</button>
+
+            <button class="button" onclick="
+      values = eval(values);
+      document.querySelector('#display').value = values;
+      ">=</button>
+
+            <button class="button" onclick="
+      values = values + '9';
+      document.querySelector('#display').value = values;
+      ">9</button>
+            <button class="button" onclick="
+      values = values + '0';
+      document.querySelector('#display').value = values;
+      ">0</button>
+            <button class="button" onclick="
+      values = values + '.';
+      document.querySelector('#display').value = values;
+      ">.</button>
+        </div>
+    </div>
+    <script>
+        let values = '';
+        document.querySelector('#display').value = values;
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container{
+            width: 300px;
+            padding:200px 30px 30px 30px;
+            border-radius: 20px;
+            background-color: #020003;
+        }
+        input{
+            outline: none;
+            border: none;
+            width: 99%;
+            background-color: transparent;
+            color: white;
+            padding: 5px 2px;
+            margin: 0px;
+            font-size: 30px;
+            text-align: right;
+            margin-bottom: 10px;
+            border-bottom: 1px solid gray;
+        }
+        button{
+            width: 60px;
+            height: 60px;
+            background-color: #2E2C2F;
+            border-radius: 50%;
+            border: none; 
+            font-size: 25px;  
+            margin: 5px 5px;
+            color: white;
+        }
+        .orange{
+            background-color: #F49317;
+        }
+    </style>
+    <script>
+        
+        const getNum = (Num) =>{
+            let val = ""
+            let values = val + Num 
+            document.querySelector('#in').value = values
+            // console.log(Num)
+        }
+        
+        const getvalues =(sign)=>{            
+            let val = ""
+            let values = val + sign   
+            document.querySelector('#in').value = values
+            console.log(sign)   
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="input" id="in" readonly/>
+        <div class="in-con">
+        <button  class="orange" onclick="getvalues('c')">c</button>
+        <button onclick="getNum(7)">7</button>
+        <button onclick="getNum(8)">8</button>
+        <button onclick="getNum(9)">9</button>
+        <button  class="orange"  onclick="getvalues('x')">x</button> 
+        <button onclick="getNum(4)">4</button>
+        <button onclick="getNum(5)">5</button>
+        <button onclick="getNum(6)">6</button>
+        <button  class="orange" onclick="getvalues('-')">-</button>
+        <button onclick="getNum(1)">1</button>
+        <button onclick="getNum(2)">2</button>
+        <button onclick="getNum(3)">3</button>
+        <button  class="orange" onclick="getvalues('+')">+</button>
+        <button onclick="getNum(0)">0</button>
+        <button onclick="getNum('.')">.</button>
+        <button  class="orange" onclick="getvalues('=')">=</button>
+        </div>
+    </div>
+</body>
+
+</html>

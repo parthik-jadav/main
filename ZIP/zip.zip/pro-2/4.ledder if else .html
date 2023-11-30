@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("enter first number"));
+        let b = parseInt(prompt("enter second number"));
+        let c = parseInt(prompt("enter thierd number"));
+        let d = parseInt(prompt("enter fourth number"));
+
+        if(a==b&&b==c&&c==d&&d==a){
+            alert("all numbers are same")
+        }
+        if(a>b&&a>c&&a>d){
+            document.write("<h1>a is big</h1>");
+        }else if(b>a&&b>c&&b>d){
+            document.write("<h1>b is big</h1>");
+        }else if(c>a&&c>b&&c>d){
+            document.write("<h1>c is big</h1>");
+        }else if(d>a&&d>c&&d>b){
+            document.write("<h1>d is big</h1>");
+        }
+    </script>
+</body>
+</html>

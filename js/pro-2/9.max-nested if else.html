@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("enter a first number"));
+        let b = parseInt(prompt("enter a second number"));
+        let c = parseInt(prompt("enter a thierd  number"));
+        let d = parseInt(prompt("enter a four number"));
+
+        if(a<b||a<c||a<d){
+            if(b<c){
+                if(d<c){
+                    document.write("c is big")
+                }
+                else{
+                document.write("d is big");
+                }
+            }else if(b<d){
+                if(d<d){
+                    document.write("b is big")
+                }
+                else{
+                document.write("d is big");
+                }
+            }
+            else{
+                document.write("b is big")
+            }
+        }else{
+            document.write("a is big");
+        }
+    </script>
+</body>
+</html>

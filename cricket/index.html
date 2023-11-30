@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row flex justify-center">
+            <button><img src="img/25477-removebg-preview.png" alt=""></button>
+            <button class="w-[500px]" onclick="run()"><img
+                    src="img/—Pngtree—pattern cricket bat clipart ball_6024969.png" alt="" class="w-[67%]"></button>
+        </div>
+    </div>
+
+
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 rounded-s-lg">
+                        <h1 id="h1" class="text-xl"></h1>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <h2 id="h2" class="text-xl"></h2>
+                    </th>
+                    <th scope="col" class="px-6 py-3 rounded-e-lg">
+                        <h3 id="h3" class="text-xl"></h3>
+                    </th>
+                    <th scope="col" class="px-6 py-3 rounded-e-lg">
+                        <h4 id="h3" class="text-xl"></h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr class="font-semibold text-gray-900 dark:text-white">
+                    <th scope="row" class="px-6 py-3 text-base">Total Run</th>
+                    <td class="px-6 py-3">ball</td>
+                    <td class="px-6 py-3">Wickets</td>
+                    <td class="px-6 py-3">overs</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        let startRun = 0;
+        let ball = 0;
+        let players = 0;
+        let over = 0;
+
+        document.querySelector("h2").innerText = localStorage.getItem("ball");
+        document.querySelector("h4").innerText = localStorage.getItem("over");
+        document.getElementById("h1").innerText = localStorage.getItem("startRun");
+        document.getElementById("h3").innerText = localStorage.getItem("players") + "/10";
+
+        function run() {
+            let runst = Math.random() * 6
+            let round = Math.round(runst)
+            localStorage.setItem("startRun", startRun);
+            localStorage.setItem("ball", ball);
+            localStorage.setItem("players", players);
+            ball = ball + 1
+            startRun = startRun + round;
+            //   console.log(startRun,round);
+            document.getElementById("h1").innerText = localStorage.getItem("startRun");
+            document.querySelector("h2").innerText = localStorage.getItem("ball");
+            if (ball % 6 == 0) {
+                localStorage.setItem("over", over);
+                over = over + 1
+                document.querySelector("h4").innerText = localStorage.getItem("over");
+            }
+            if (ball >= 120 && startRun <= 350) {
+                localStorage.setItem("over", over);
+                document.getElementById("h3").innerText = localStorage.getItem("players") + "/10";
+                document.getElementById("h1").innerHTML = '<span style="color:red;">' + "Total Run = " + localStorage.getItem("startRun") + "</span>";
+                document.querySelector("h2").innerText = "You Lose";
+                document.getElementById("h4").innerText = "overs = " + localStorage.getItem("over");
+                alert("Game Over")
+            }
+            else if (round == 6) {
+                players++;
+                document.getElementById("h3").innerText = localStorage.getItem("players") + "/10";
+                if (players == 10) {
+                    alert("you lose")
+                    localStorage.setItem("over", over);
+                    document.getElementById("h1").innerText = " Game Over ";
+                    document.querySelector("h2").innerText = "you lose";
+                    document.getElementById("h3").innerHTML = '<span style="color:red;">' + "wickets = " + localStorage.getItem("players") + "/10" + "</span>";
+                    document.getElementById("h4").innerText = "overs = " + localStorage.getItem("over");
+                }
+            }
+            else if (ball >= 120 && startRun > 350) {
+                alert("You Won")
+                document.getElementById("h1").innerHTML = '<span style="color:green;">' + "Total Run = " + localStorage.getItem("startRun") + "</span>";
+                localStorage.setItem("over", over);
+                document.querySelector("h2").innerText = " total ball is : " + localStorage.getItem("ball");
+                document.getElementById("h3").innerText = "wickets = " + localStorage.getItem("players") + "/10";
+                document.getElementById("h4").innerText = "overs = " + localStorage.getItem("over");
+            }
+        }
+    </script>
+</body>
+
+</html>

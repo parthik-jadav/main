@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input{
+	font-size: 40px;
+}
+label{
+	font-size: 45px;
+}
+</style>
+<body>
+
+<label>Enter number : </label>
+<input type="number" onkeypress="input(event)" id="input" name="">
+
+<script type="text/javascript">
+
+function input(event) {
+
+   if (event.key === "Enter") {
+
+     let input = document.getElementById('input');
+	  let b = input.value
+	  let a=b%2;
+ 
+      if (a==0){
+    	document.write("<h1>number is even</h1>");
+      }else if (a==1){
+    	document.write("<h1>number is odd</h1>");
+      }else{
+    	alert("this number is invalid")
+      }
+   }
+}
+</script>
+</body>
+</html>
