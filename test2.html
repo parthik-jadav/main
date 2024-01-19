@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: no-repeat;
+        background-size: calc(95% + 94px);
+    }
+</style>
+
+<body>
+    <audio>
+        <source src="01. Ground Theme.mp3" type="mp3">
+    </audio>
+<!-- <img src="" alt=""> -->
+    <script>
+    let a = 10 
+    let box = document.createElement('div');
+    let body = document.querySelector('body');
+    let img = document.createElement('img');
+    img.src = '33HU.gif'
+    img.style.width = '125px';
+    box.style.width = '100px';
+    box.style.height = '100px';
+    box.style.background = 'transparent';
+    box.style.position = 'absolute';
+    box.style.bottom = '30px';
+    box.appendChild(img);
+    box.style.backgroundImage = 'url("mario-game-3840x2400.jpg")';
+    body.style.margin = '0px'
+    body.appendChild(box);
+    body.style.backgroundImage = 'url("Video Game Super Mario Bros_ Wallpaper.jpg")';
+
+    // body.appendChild(img);
+
+       
+       setInterval(function test(){
+       box.style.transform = 'translate('+a+'px)';
+           a+=50;
+
+           if(a>1930){
+             alert('game over')
+           }
+        //    console.log(a)
+    },1000) 
+    </script>
+</body>
+</html>

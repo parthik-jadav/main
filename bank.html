@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class bank {
+            constructor(Deposite,widraw) {
+                this.Deposite = Deposite;
+                this.widraw = widraw;
+            }
+            details(){
+                console.log(`depoite: ${this.Deposite}`);
+                console.log(`withdraw: ${this.widraw}`);    
+                console.log(`Balance: ${this.balance}`);
+            }
+        }
+        class user extends bank {
+            constructor(Deposite,widraw,balance) {
+                super(Deposite,widraw);
+                this.balance = balance+Deposite-widraw;
+            }
+
+            showBalnece(){
+                console.log(`you have depoite: ${this.Deposite} and withdraw: ${this.widraw} your total Balance is: ${this.balance}`);
+            }
+        }
+
+        user1 = new user(1000,500,0);
+
+        user1.showBalnece();
+        user1.details();
+    </script>
+</body>
+</html>

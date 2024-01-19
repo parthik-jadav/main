@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <!-- form -->
+    <form>
+        <h1>Data Table</h1>
+        <input type="text" name="fname" id="fname" />
+        <input type="text" name="lname" id="lname" />
+        <input type="number" name="age" id="age" />
+        <button onclick="save()">add</button>
+    </form>
+
+    <!-- table -->
+    <table>
+        <thead>
+            <th>First Name</th>
+            <th>last Name</th>
+            <th>age</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <script>
+        const arr = JSON.parse(localStorage.getItem('data')) || [];
+        const tbody = document.getElementById('tbody');
+
+        function save() {
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const age = document.getElementById('age').value;
+
+            const object = {
+                fname,
+                lname,
+                age,
+            }
+
+            arr.push(object);
+            localStorage.setItem('data', JSON.stringify(arr));
+            loadData();
+        }
+
+        arr.forEach(loadData);
+
+        function loadData(object) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${object.fname}</td>
+            <td>${object.lname}</td>
+            <td>${object.age}</td>
+            <td><button onclick="${remove_data(object)}">remove</button></td>`
+            tbody.appendChild(tr);       
+        }
+
+        function remove_data(object) {
+            console.log(object.fname);
+        }
+    </script>
+</body>
+
+</html>

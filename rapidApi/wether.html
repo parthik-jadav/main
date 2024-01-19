@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: #f3f2ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            background: #eee;
+        }
+
+        .box {
+            width: 20vw;
+            height: 60vh;
+            border-radius: 5px;
+            box-shadow: 0 2px 30px rgba(black, 0.2);
+            background: #a5bbdd;
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+            min-width: 200px;
+            min-height: 350px;
+            display: none;
+            transition: 2s ease-in;
+        }
+
+        .wave {
+            opacity: 0.3;
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            background: white;
+            width: 500px;
+            height: 500px;
+            margin-left: -250px;
+            margin-top: -250px;
+            transform-origin: 50% 48%;
+            border-radius: 43%;
+            animation: drift 3000ms infinite linear;
+            z-index: 1;
+        }
+
+        .wave.-three {
+            animation: drift 5000ms infinite linear;
+            z-index: 2 !important;
+            opacity: 0.2;
+        }
+
+        .wave.-two {
+            animation: drift 7000ms infinite linear;
+            opacity: 0.1;
+            z-index: 3 !important;
+        }
+
+        .box:after {
+            content: "";
+            display: block;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+            transform: translate3d(0, 0, 0);
+        }
+
+        @keyframes drift {
+            from {
+                transform: rotate(0deg);
+            }
+
+            from {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45%;
+            z-index: 4;
+        }
+
+        .location {
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .date {
+            text-align: center;
+            margin-top: 5%;
+            color: lighten(grey, 10%);
+            font-size: 70%;
+        }
+
+        .temp {
+            margin-top: 10%;
+            text-align: center;
+        }
+
+        .weathercon {
+            height: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                width: 90vw;
+                height: 80vh;
+            }
+
+            .wave {
+                top: 85%;
+            }
+
+            .weathercon {
+                font-size: 5em;
+            }
+
+            .info {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-height: 500px) {
+            .box {
+                height: 80vh;
+            }
+
+            .wave {
+                top: 115%;
+            }
+        }
+
+        body>span {
+            width: 100vw;
+            text-align: center;
+            color: grey;
+        }
+
+        input {
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            width: 350px;
+            position: absolute;
+            top: 10%;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 16px;
+            border: none;
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            top: 10%;
+            right: 40%;
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        input:focus {
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input" placeholder="surat">
+    <button onclick="test()" class="new-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div class='box'>
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+        <div class="weathercon"><i class='fas fa-sun' style='color: #d36326;'></i></div>
+        <div class="info">
+            <h2 class="location">SUNNYVILLE</h2>
+            <p class="date" id="newdate">MONDAY | SEP 12 | 12:34</p>
+            <h1 class="temp">25 &deg;C | 77 &deg;F</h1>
+            <h3 id="hava" style="text-align: center; margin: 10px; padding: 20px;"></h3>
+        </div>
+    </div>
+    <script>
+        function test() {
+            if (input.value == '') {
+                return
+            }
+            let box = document.querySelector('.box');
+            box.style.display = 'block';
+            let city = document.getElementById('input').value;
+
+
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=a5d9781f30d813a1295f5385f15e4be4`).then((res) => {
+                res.json().then((data) => {
+                    if (data.name == undefined) {
+                        return
+                    }
+                    let temp = Math.round(data.main.temp)
+                    let fet = (temp * 9 / 5) + 32
+                    console.log(data);
+                    document.querySelector(".location").innerHTML = data.name
+                    document.querySelector(".temp").innerHTML = temp + "&deg;C" + "  |  " + fet + "&deg;F"
+                    document.querySelector("#hava").innerHTML = '<i class="fa-solid fa-smog" style="margin-right:10px;"></i>' + data.main.humidity + "%        ||       " + `<i class="fa-solid fa-tornado" style="margin-right:10px;"></i>` + data.wind.speed + "km/h"
+
+                })
+            })
+
+            function date() {
+                let date = new Date()
+                let today_date = date.getDate()
+                let day = date.getDay()
+                let month = date.getMonth()
+                let time = date.getHours()
+                let minute = date.getMinutes()
+                let second = date.getSeconds()
+                // console.log(minute,"minut");
+                time > 12 ? time = time - 12 : time;
+                time < 10 ? time = '0' + time : time;
+                minute < 10 ? minute = '0' + minute : minute;
+                second < 10 ? second = '0' + second : second;
+                var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var months = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
+
+                document.querySelector("#newdate").innerHTML = weekday[day] + "  |  " + months[month] + "  " + today_date + "  |  " + time + ":" + minute + ":" + second;
+            } date()
+            setInterval(date, 1000)
+        }
+    </script>
+</body>
+
+</html>

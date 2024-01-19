@@ -1,0 +1,19 @@
+.ut-border{
+ border: 2px solid red;
+}
+.dDJltW{
+    fill: rgb(255, 255, 255);
+}
+.white-svg{
+    fill: white;
+    color: white;
+    width: 20px;
+}
+.head-li{
+    width: 25px;
+}
+.hover-li:hover .search-hov{
+ color: white;
+ fill: white;
+ transition: all .5s ease-in-out;
+}

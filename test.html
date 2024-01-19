@@ -1,113 +1,81 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-
-<title>using JavaScript:void(0)</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
-<body align="center">
-
-    <h2>Using JavaScript:void(0)</h2>
-
-<a href="JavaScript:void(0);" ondblclick="alert('Task completed!')">Double Click Me!</a>
-
+<body>
+  <script>
+    for (let i = 49; i >= 0; i--) {
+      for (let k = i; k >= 0; k--) {
+        document.write('&nbsp')
+      }
+      for (let j = i; j <= 49; j++) {
+        document.write('*')
+      }
+       for (let o = 0; o <= 50; o++) {
+        document.write('*')
+      }
+      document.write('<br>')
+    }
+  </script>
 </body>
 
 </html>
 
+
+
+
+
 <!-- <!DOCTYPE html>
+
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 </head>
+
 <body>
-   <input type="text" id="input">
-  <button onclick="run()">click</button>
-  <div id="output"></div> -->
+  <input type="text" name="product" id="product" />
+  <button onclick="save()">Add</button>
+
+  <ul></ul>
+
   <script>
-  // let int = 12345678910111211
-  // let ans = int.toString();
-  // document.write(ans);
-  console.log("hi")
+    arr = test()
 
+    function test() {
+      arr = JSON.parse(localStorage.getItem('data')) || [];
+      return arr;
+    }
 
-  //   arr = [];
-  //   function run(){
-    
-  //   let input = document.getElementById("input").value
-  //   arr.push(input)
-  //   let ans = arr.join("<br>")
-  //   arr.map((val) => {document.getElementById("output").innerHTML = ans+"<br>"})
-  // }
+    console.log(arr, 'arr');
 
+    const ul = document.querySelector("ul");
 
+    const save = () => {
+      const product = document.getElementById("product").value;
+      arr.push(product);
+      localStorage.setItem("product", JSON.stringify(arr));
+      loadData(product);
+    };
 
+    console.log(localStorage);
 
+    arr.forEach(loadData);
 
-
-    //  const num = [1,2,3,4,5,6,7,8,9,10];
-
-    //  const check = () => {
-    //    return test();
-    //    }
-       
-    //    const test = () =>{
-    //      if(num > 5){
-    //        return num
-    //       };
-    //       test()
-    //       document.write(check());
-
-
-  
-
-
-
-
-
-
-    // const input = prompt("enter any fruits name ex: Banana,Orange,Apple,Mango");
-
-    // const fruits = ["Banana", "Orange", "Apple", "Mango"];
-   
-    // // fruits.push(input);
-
-    // let ans = fruits.filter((a) => {
-    //   if(a === input)
-    //   {
-    //     return input;
-    //   }else{
-    //     return false;
-    //   }
-    // });
-
-    // document.write(ans);
-
-
-    // const ab = [1,2,3,4,5,6,7,8,9,10]
-
-
-    // fruits.map((fruit, index) =>{
-    //   document.write(fruit," = ",index, "<br>")
-    // })
-
-
-
-    // for(let i = 0; i < arry.length; i++){
-    //   if(arry[i]+arry[i+1] == 900){
-    //     let index = arry.indexOf(arry[i]);
-    //     document.write(index+ "<br>")
-    //     document.write(index+1 + "<br>")
-    //   }
-    // }
-
-    // let ans = arry.filter((price) => price > 100)
-    // document.write(ans)
+    function loadData(product) {
+      const li = document.createElement("li");
+      li.textContent = product;
+      ul.appendChild(li);
+    }
   </script>
- </body>
-</html> 
+</body>
+
+</html> -->

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1 id="head"></h1>
+
+<body>
+    <script>
+        let num = parseInt(prompt("Enter a number"));
+        const inter = setInterval(() => {
+            num -= 1
+            document.getElementById('head').innerHTML = num
+
+            if (num <= 0) {
+                clearInterval(inter)
+            }
+        },1);
+
+
+    </script>
+</body>
+
+</html>

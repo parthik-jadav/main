@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pro-1</title>
+</head>
+<body>
+    <script>
+        class student {
+            constructor(Physics, Chemistry, Biology, Mathematics, Computer){
+             this.Physics = Physics;
+             this.Chemistry = Chemistry;
+             this.Biology = Biology;
+             this.Computer = Computer;
+             this.Mathematics = Mathematics;
+            }
+
+            printResult(){
+             let res = ((this.Physics+this.Chemistry+this.Biology+this.Computer+this.Mathematics)/500)*100
+             console.log(res+"%");
+            }
+        }
+        let s1 = new student(80,10,20,50,30);
+        s1.printResult();
+    </script>
+</body>
+</html>

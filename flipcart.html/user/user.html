@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+</head>
+
+<body>
+    <header id="container">
+        <div id="nav-bar">
+            <div id="nav-belt">
+                <div class="nav-left">
+                    <div id="nav-logo">
+                        <a href="/"><img src="./r.png" alt="" class="w-[150px] h-[100px]"></a>
+                    </div>
+                </div>
+                <div class="nav-fill">
+                    <div id="nav-search">
+                        <form id="nav-search-bar-form">
+                            <div class="nav-left">
+                                <a href="">ALL</a>
+                            </div>
+                            <div class="nav-fill">
+                                <input type="text">
+                            </div>
+                            <div class="nav-right">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div id="nav-tools">
+                        <a href="../index.html">Log out</a>
+                        <button type="button" data-drawer-target="drawer-navigation"
+                            data-drawer-show="drawer-navigation" aria-controls="drawer-navigation"
+                            class="relative me-[20px] inline-flex items-center p-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="fa-solid fa-cart-shopping text-[18px]"></i>
+                            <span class="sr-only">Notifications</span>
+                            <div
+                                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                                <span id="count">10</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+    </header>
+    <!-- drawer component -->
+    <div id="drawer-navigation"
+        class="fixed top-0 left-0 z-40 w-[400px] h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-[#FFF] dark:bg-gray-800"
+        tabindex="-1" aria-labelledby="drawer-navigation-label">
+        <div class="fixed top-0 bg-[#FFF] w-[360px] p-[10px] z-30">
+            <h5 id="drawer-navigation-label " class=" font-semibold text-black capitalize text-2xl dark:text-gray-400">
+                Cart
+            </h5>
+            <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="loadCart()">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Close menu</span>
+            </button>
+        </div>
+        <div class="py-4 overflow-y-auto">
+            <ul class="space-y-2 font-medium" id="cart-ul">
+
+            </ul>
+        </div>
+        <div class="fixed bottom-0 bg-[#FFF] w-[360px] p-[10px] z-30">
+            <h5 id="drawer-navigation-label " class=" font-semibold text-black capitalize text-2xl dark:text-gray-400">
+                total : <span id="total-price">0</span>
+            </h5>
+            </button>
+        </div>
+    </div>
+    
+    <div class="flex flex-wrap container mx-auto" id="main"></div>
+    
+    
+    <script>
+        let productList = JSON.parse(localStorage.getItem('productList'));
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const main = document.getElementById('main');
+        let cartLoading = JSON.parse(localStorage.getItem("cart"));
+        let cartul = document.getElementById('cart-ul');
+        let total = 0;
+        
+        productList.map((val, ind) => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+            <div class="w-[350px] m-2 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="p-8 rounded-t-lg" src="https://flowbite.com/docs/images/products/apple-watch.png" />
+                    </a>
+                    <div class="px-5 pb-5">
+                        <a href="#">
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">${val.productName}</h5>
+                            <h6>${val.productDetails}</h6>
+                            </a>
+                            <div class="flex items-center mt-2.5 mb-5">
+                                <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                            </svg>
+                                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                </svg>
+                                <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    </div>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-3xl font-bold text-gray-900 dark:text-white">$${val.productPrice}</span>
+                                      
+                            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="getIndex(${ind})">Add To Cart</a>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            `
+            main.appendChild(div);
+
+            let count = cart.length;
+            let ans = document.getElementById("count").innerHTML = count;
+        })
+        function getIndex(ind) {
+            console.log(ind);
+            const product = productList[ind];
+            if(product === cart[ind]){
+                console.log(product,"product is" );
+            }
+            console.log(product);
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+        function loadCart() {
+            let print = JSON.parse(localStorage.getItem("print")) || [];
+            print=[]
+            cart.map((val)=>{
+                console.log(print.includes(val.productPrice));
+                if(print.includes(val.productDetails)==true){
+                    return
+                }
+                else{
+                    print.push(val)
+                    localStorage.setItem("print",JSON.stringify(print));
+                }
+            })
+            
+            print.map((val,ind) => {
+                let li = document.createElement("li");
+                li.innerHTML = `
+                <div class="w-[320px] m-[20px] bg-white shadow-md rounded-xl duration-500 hover:scale-105 z-0 hover:shadow-xl">
+                    <a href="#">
+                        <img src="https://flowbite.com/docs/images/products/apple-watch.png" alt="Product" class="object-cover rounded-t-xl" />
+                        <div class="px-4 py-3 w-72">
+                            <p class="text-lg font-bold text-black truncate block capitalize">${val.productName}</p>
+        <span class="text-gray-400 mr-3 uppercase text-xs">${val.productDetails}</span>
+        <div class="flex items-center">
+            <p class="text-lg font-semibold text-black cursor-auto my-3">$${val.productPrice}</p>
+            <del>
+                <p class="text-sm text-gray-600 cursor-auto ml-2">$1999</p>
+                </del>
+                <div class="ml-auto">
+                    <i class="fa-solid fa-trash hover:text-red-700" onclick="removeCart(${ind})"></i>  
+                    </div>
+            </div>
+            </div>
+            </a>
+            </div>
+            `
+            cartul.appendChild(li);
+            totalp(ind);
+        });
+    }
+        loadCart()
+        function removeCart(ind) {
+         cart.splice(ind,1);
+         localStorage.setItem("cart",JSON.stringify(cart));
+         location.reload();
+        }
+        function totalp(index){
+        total = 0
+        cart.map((val,ind)=>{
+           total += parseInt(val.productPrice)
+        })
+        // console.log(parseInt(val.productPrice));
+         document.getElementById("total-price").innerHTML = "$"+ total
+        }totalp()
+    </script>
+    <footer class="footer-1 bg-[rgb(35,47,62)] text-white py-8 sm:py-12 mt-5">
+        <div class="container mx-auto px-4">
+            <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+                <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+                    <h5 class="text-xl font-bold mb-6">Features</h5>
+                    <ul class="list-none footer-links">
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Cool stuff</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Random feature</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Team feature</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Stuff for developers</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Another one</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Last time</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+                    <h5 class="text-xl font-bold mb-6">Resources</h5>
+                    <ul class="list-none footer-links">
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Resource</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Resource name</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Another resource</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Final resource</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+                    <h5 class="text-xl font-bold mb-6">About</h5>
+                    <ul class="list-none footer-links">
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Team</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Locations</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Privacy</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent">Terms</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+                    <h5 class="text-xl font-bold mb-6">Help</h5>
+                    <ul class="list-none footer-links">
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent ">Support</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent ">Help Center</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="border-b border-solid border-transparent ">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
+                    <h5 class="text-xl font-bold mb-6 sm:text-center xl:text-left">Stay connected</h5>
+                    <div class="flex sm:justify-center xl:justify-start">
+                        <a href=""
+                            class="w-8 h-8  border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href=""
+                            class="w-8 h-8 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href=""
+                            class="w-8 h-8   border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
+                            <i class="fab fa-google-plus-g"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+</body>
+
+</html>

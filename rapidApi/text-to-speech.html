@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        async function test() {
+            const settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://text-to-speech27.p.rapidapi.com/speech/lang',
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'c8b1f13381mshdc2fdc80bbcd314p17158ajsn3ec5c2e325aa',
+                    'X-RapidAPI-Host': 'text-to-speech27.p.rapidapi.com'
+                }
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response.af);
+            });
+        } test()
+    </script>
+</body>
+
+</html>

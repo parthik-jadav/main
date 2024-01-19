@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ffffff !important;
+        }
+        .main{
+            border-radius: 10px;
+            background-color: #7B66FF;
+            position: absolute;
+            top: 18%;
+        }
+        input{
+            width: 100%;
+            height: 40px;
+            background-color: #ffffff;
+            border: none;
+            border-radius:5px;
+            margin: 10px !important;
+        }
+
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/assets/dist/css/bootstrap.min.css">
+    <div class="conatiner">
+        <div class="row justify-content-center align-content-center">
+          <div class="col-3  p-5 main">
+            <h1 class="head ps-2 h2 text-white text-center">Form Validation</h1>
+            <h6 class="ps-2 m-0 text-white mt-5">Enter your first name</h6>
+            <input type="text" id="fname">
+            <h6 class="ps-2 m-0 text-white">Enter your last name</h6>
+            <input type="text" id="lname">
+            <h6 class="ps-2 m-0 text-white ">Enter your Email</h6>
+            <input type="email" id="email">
+            <h6 class="ps-2 m-0 text-white ">Enter your pass</h6>
+            <input type="password" id="password">
+            <h6 class="ps-2 m-0 text-white">Enter your age</h6>
+            <input type="number" id="age">
+            <button onclick="fetch()" type="submit" class="btn btn-info text-white w-100 ms-2 mt-2" >Submit</button>
+          </div>
+        </div>
+    </div>
+    <script src="bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function fetch(){
+        let fname=document.getElementById('fname').value;
+        let lname=document.getElementById('lname').value;
+        let email=document.getElementById('email').value;
+        let password=document.getElementById('password').value;
+        let age=document.getElementById('age').value;
+        if(fname==""){
+            alert("First Name is required");  
+        }
+        if(lname==""){
+            alert("Last Name is required");       
+        }
+        if(email==""){
+            alert("Email is required");      
+        }
+        if(password==""){
+            alert("Password is required");           
+        }
+        if(age==""){
+            alert("Age is required");           
+        }
+        if(age<18){
+            alert("You are not eligible to Vote");           
+        }
+        if(age>18){
+            alert("You are eligible to Vote");                
+        }
+
+        console.log("first name :"+fname);
+        console.log("last name :"+lname);
+        console.log("Email :"+email);
+        console.log("password :"+password);
+        console.log("age :"+age);
+        }
+    </script>
+</body>
+</html>

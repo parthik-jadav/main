@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            /* width: 100px; */
+            margin: 0px auto;
+        }
+        .line{
+            width: 40px;
+            height: 3px;
+            background-color: black;
+            margin: 10px;
+            transition: all 0.5s ease-in-out;
+        }
+        .line-1{
+        transform: translate(0px,17px) rotate(-45deg);
+        }
+        .line-2{
+            opacity: 0;
+        }
+        .line-3{
+            transform: translate(0px,-10px) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+    </div>
+    <script>
+        
+        var con = document.querySelector('.container');
+        var line1 = document.querySelector('.line-1');
+        var line2 = document.querySelector('.line-2');
+        var line3 = document.querySelector('.line-3');
+        con.addEventListener('click',function(){
+            // line1.style.rotate = '-45deg';
+            // line1.style.transform = 'translate(0px,17px) rotate(-45deg)';
+            // line2.style.opacity = '0';
+            // line3.style.transform = 'translate(0px,-10px) rotate(45deg)';
+            line1.classList.toggle('line-1');
+            line2.classList.toggle('line-2');
+            line3.classList.toggle('line-3');
+        })
+    </script>
+</body>
+</html>

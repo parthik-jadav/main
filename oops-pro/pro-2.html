@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pro-2</title>
+</head>
+<style>
+    td {
+        width: 5%;
+        padding: 10px 0px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+        background-color: aliceblue;
+    }
+
+    th {
+        padding: 10px 0px;
+        background-color: rgb(182, 240, 221);
+    }
+</style>
+
+<body>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <script>
+        let data = [
+            {
+                name: "jay",
+                email: "jay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ajay",
+                email: "ajay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "vijay",
+                email: "vijay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ashish",
+                email: "ashish@gmail.com",
+                phone: "12345",
+            },
+        ];
+
+        class dataTable {
+
+            constructor() {
+                let tbody = document.getElementById("tbody")
+                data.map((val) => {
+                    let tr = document.createElement("tr");
+                    tr.innerHTML = `
+                    <td>${val.name}</td>
+                    <td>${val.email}</td>
+                    <td>${val.phone}</td>
+                    `
+                    tbody.appendChild(tr)
+                })
+            }
+        }
+
+        let s1 = new dataTable();
+    </script>
+</body>
+
+</html>

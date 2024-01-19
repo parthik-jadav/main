@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- input-area -->
+    <input type="text" id="name">
+    <input type="text" id="desc">
+    <input type="number" id="price">
+    <button id="add" onclick="render()">add</button>
+
+    <div id="app"></div>
+
+    <script>
+       let list = JSON.parse(localStorage.getItem("list")) || [];
+       let app = document.getElementById("app");
+       
+       function render() {
+           let name = document.getElementById("name").value;
+           let desc = document.getElementById("desc").value;
+           let price = document.getElementById("price").value;
+
+           let obj = {
+            name,
+            desc,
+            price
+        }
+        
+       }
+    </script>
+</body>
+</html>
