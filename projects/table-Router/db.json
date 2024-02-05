@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": "9356",
+      "productName": "Parthik",
+      "price": 200
+    },
+    {
+      "id": "6029",
+      "productName": "sdafsed",
+      "price": "123"
+    },
+    {
+      "id": "4d77",
+      "productName": "sdfsf",
+      "price": ""
+    },
+    {
+      "id": "263b",
+      "productName": "sdfsf",
+      "price": "32432"
+    },
+    {
+      "id": "c668",
+      "productName": "hell9o",
+      "price": "123"
+    },
+    {
+      "id": "baa8",
+      "productName": "fgsgsd",
+      "price": "213"
+    },
+    {
+      "id": "fc5f",
+      "productName": "fgsgsd",
+      "price": "213"
+    },
+    {
+      "id": "8d29",
+      "productName": "FUR",
+      "price": "124"
+    },
+    {
+      "id": "c51e",
+      "productName": "hello",
+      "price": "124"
+    },
+    {
+      "id": "6741",
+      "productName": "sadfsdgfsdfsafa",
+      "price": "21321342352525"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

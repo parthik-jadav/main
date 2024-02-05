@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": "156e",
+      "name": "Parthik Jadav ",
+      "password": "123"
+    },
+    {
+      "id": "d949",
+      "name": "Parthik Jadav ",
+      "password": "123"
+    },
+    {
+      "id": "263a",
+      "name": "1",
+      "password": "1"
+    },
+    {
+      "id": "a313",
+      "name": "2",
+      "password": "2"
+    },
+    {
+      "id": "1a46",
+      "name": "john",
+      "password": "deo"
+    },
+    {
+      "id": "974c",
+      "name": "parthik",
+      "password": "123"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
